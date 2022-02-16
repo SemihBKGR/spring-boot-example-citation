@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: spring-boot-example-tale
+  profiles:
+    active: dev
