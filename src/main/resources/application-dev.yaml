@@ -4,5 +4,11 @@ spring:
     username: user
     password: password
 
+sql:
+  r2dbc:
+    enabled: true
+    populators: [ './sql/schema.sql' ]
+    cleaners: [ ]
+
 server:
   port: 9000
