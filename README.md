@@ -1,1 +1,3 @@
-# spring-boot-example-tale
+# Spring Boot Example Tale
+
+Example project of Spring Boot
