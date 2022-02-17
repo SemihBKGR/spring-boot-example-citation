@@ -9,6 +9,9 @@
 <h1>Login</h1>
 
 <form action="/login" method="post">
+    <div th:if="${param.error != null}">
+        <p>Incorrect credentials</p>
+    </div>
     <div>
         <label for="username">Username</label>
         <input id="username" name="username" type="text">

@@ -3,6 +3,20 @@ spring:
     url: r2dbc:mysql://localhost:3306/taledb
     username: user
     password: password
+  session:
+    store-type: redis
+  redis:
+    host: localhost
+    port: 6379
+
+server:
+  port: 9000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
 
 sql:
   r2dbc:
@@ -19,6 +33,3 @@ validation:
       email-max: 64
       password-min: 6
       pasword-max: 64
-
-server:
-  port: 9000
