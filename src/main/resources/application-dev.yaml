@@ -33,3 +33,4 @@ validation:
       email-max: 64
       password-min: 6
       pasword-max: 64
+    blacklist: blacklist.list

@@ -4,6 +4,6 @@ import reactor.core.publisher.Mono;
 
 public interface Validator<E> {
 
-    Mono<E> validate(E e);
+    Mono<E> validate(E e, boolean lenient);
 
 }

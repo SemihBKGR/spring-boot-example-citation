@@ -13,7 +13,7 @@ public abstract class ConstraintValidator<E> implements Validator<E> {
     protected static final int DEFAULT_MAX_LENGTH = Integer.MAX_VALUE;
     protected static final String DEFAULT_REGEX = "";
 
-    protected final Map<String, Object> constraintMap;
+    private final Map<String, Object> constraintMap;
 
     protected ConstraintValidator(Map<String, Object> constraintMap) {
         this.constraintMap = constraintMap;
