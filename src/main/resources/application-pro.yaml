@@ -1,27 +1,27 @@
 spring:
   r2dbc:
-    url: r2dbc:mysql://localhost:3306/taledb
-    username: user
-    password: password
+    url: r2dbc:mysql://${MYSQL_HOSTNAME}:${MYSQL_PORT:3306}/${MYSQL_DATABASE}
+    username: ${MYSQL_USERNAME}
+    password: ${MYSQL_PASSWORD}
   session:
     store-type: redis
   redis:
-    host: localhost
-    port: 6379
+    host: ${REDIS_HOSTNAME}
+    port: ${REDIS_PORT:6379}
 
 server:
-  port: 9000
+  port: ${SERVER_PORT}
 
 management:
   endpoints:
     web:
       exposure:
-        include: '*'
+        include: [ 'health', 'info' ]
 
 sql:
   r2dbc:
-    enabled: true
-    populators: [ './sql/schema.sql' ]
+    enabled: false
+    populators: [ ]
     cleaners: [ ]
 
 validation:

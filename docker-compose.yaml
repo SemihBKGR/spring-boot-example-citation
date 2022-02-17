@@ -22,6 +22,30 @@ services:
       - '6379:6379'
     networks:
       - tale
+  server:
+    build: .
+    image: tale
+    hostname: tale
+    container_name: tale-server
+    environment:
+      SPRING_PROFILES_ACTIVE: pro
+      SERVER_PORT: 9000
+      MYSQL_HOSTNAME: mysql
+      MYSQL_PORT: 3306
+      MYSQL_DATABASE: taledb
+      MYSQL_USERNAME: user
+      MYSQL_PASSWORD: password
+      REDIS_HOSTNAME: redis
+      REDIS_PORT: 6379
+    expose:
+      - 9000
+    ports:
+      - '9000:9000'
+    depends_on:
+      - database
+      - cache
+    networks:
+      - tale
 
 networks:
   tale:

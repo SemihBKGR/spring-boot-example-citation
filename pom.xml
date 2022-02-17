@@ -22,6 +22,7 @@
         <repackage.classifier/>
         <spring-native.version>0.11.2</spring-native.version>
         <testcontainers.version>1.16.2</testcontainers.version>
+        <final-jar-name>tale</final-jar-name>
     </properties>
 
     <dependencies>
@@ -66,7 +67,6 @@
             <groupId>org.thymeleaf.extras</groupId>
             <artifactId>thymeleaf-extras-springsecurity5</artifactId>
         </dependency>
-
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -139,6 +139,7 @@
     </dependencyManagement>
 
     <build>
+        <finalName>${final-jar-name}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -180,6 +181,7 @@
             </plugin>
         </plugins>
     </build>
+
     <repositories>
         <repository>
             <id>spring-releases</id>
@@ -190,6 +192,7 @@
             </snapshots>
         </repository>
     </repositories>
+
     <pluginRepositories>
         <pluginRepository>
             <id>spring-releases</id>
