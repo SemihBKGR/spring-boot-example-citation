@@ -25,9 +25,8 @@ public class SecurityConfig {
     @Bean
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
         http
-                .formLogin()
-                .and()
-                .authorizeExchange().anyExchange().authenticated();
+                .formLogin().loginPage("/login").and()
+                .authorizeExchange().pathMatchers("/login", "/signup").permitAll().anyExchange().authenticated();
         return http.build();
     }
 

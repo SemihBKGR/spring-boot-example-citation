@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tale</title>
+</head>
+<body>
+<h1>Sign Up</h1>
+
+<form action="/signup" method="post">
+    <div>
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text">
+        <div th:if="${validation_error?.invalidFieldMap?.get('username') != null}">
+            <div th:each="msg: *{validation_error.invalidFieldMap.get('username').messages}">
+                <p th:text="${msg}"></p>
+            </div>
+        </div>
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password">
+        <div th:if="${validation_error?.invalidFieldMap?.get('password') != null}">
+            <div th:each="msg: *{validation_error.invalidFieldMap.get('password').messages}">
+                <p th:text="${msg}"></p>
+            </div>
+        </div>
+    </div>
+    <div>
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email">
+        <div th:if="${validation_error?.invalidFieldMap?.get('email') != null}">
+            <div th:each="msg: *{validation_error.invalidFieldMap.get('email').messages}">
+                <p th:text="${msg}"></p>
+            </div>
+        </div>
+    </div>
+    <input th:name="${_csrf.parameterName}" th:value="${_csrf.token}" type="hidden"/>
+    <button>Sign up</button>
+</form>
+</body>
+</html>

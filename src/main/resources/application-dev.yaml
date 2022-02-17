@@ -6,9 +6,19 @@ spring:
 
 sql:
   r2dbc:
-    enabled: true
+    enabled: false
     populators: [ './sql/schema.sql' ]
     cleaners: [ ]
+
+validation:
+  user:
+    constraints:
+      username-min: 5
+      username-max: 32
+      email-min: 8
+      email-max: 64
+      password-min: 6
+      pasword-max: 64
 
 server:
   port: 9000
