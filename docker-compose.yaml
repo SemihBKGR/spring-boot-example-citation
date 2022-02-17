@@ -2,24 +2,22 @@ version: '3.9'
 
 services:
   database:
-    image: mysql:5.7
-    hostname: mysql
+    image: 'mysql:${MYSQL_VERSION}'
+    hostname: '${MYSQL_HOSTNAME}'
     container_name: mysql-server
     environment:
-      MYSQL_DATABASE: 'taledb'
-      MYSQL_USER: 'user'
-      MYSQL_PASSWORD: 'password'
-      MYSQL_ROOT_PASSWORD: 'password'
-    ports:
-      - '3306:3306'
+      MYSQL_DATABASE: '${MYSQL_DATABASE}'
+      MYSQL_USER: '${MYSQL_USER}'
+      MYSQL_PASSWORD: '${MYSQL_PASSWORD}'
+      MYSQL_ROOT_PASSWORD: '${MYSQL_ROOT_PASSWORD}'
+    volumes:
+      - ./volumes/mysql:/docker-entrypoint-initdb.d
     networks:
       - tale
   cache:
-    image: redis:6.2-alpine
-    hostname: redis
+    image: 'redis:${REDIS_VERSION}'
+    hostname: '${REDIS_HOSTNAME}'
     container_name: redis-server
-    ports:
-      - '6379:6379'
     networks:
       - tale
   server:
@@ -28,19 +26,19 @@ services:
     hostname: tale
     container_name: tale-server
     environment:
-      SPRING_PROFILES_ACTIVE: pro
-      SERVER_PORT: 9000
-      MYSQL_HOSTNAME: mysql
-      MYSQL_PORT: 3306
-      MYSQL_DATABASE: taledb
-      MYSQL_USERNAME: user
-      MYSQL_PASSWORD: password
-      REDIS_HOSTNAME: redis
-      REDIS_PORT: 6379
+      SPRING_PROFILES_ACTIVE: '${TALE_SPRING_PROFILES_ACTIVE}'
+      SERVER_PORT: '${TALE_SERVER_PORT}'
+      MYSQL_HOSTNAME: '${MYSQL_HOSTNAME}'
+      MYSQL_PORT: '${MYSQL_PORT}'
+      MYSQL_DATABASE: '${MYSQL_DATABASE}'
+      MYSQL_USERNAME: '${MYSQL_USER}'
+      MYSQL_PASSWORD: '${MYSQL_PASSWORD}'
+      REDIS_HOSTNAME: '${REDIS_HOSTNAME}'
+      REDIS_PORT: '${REDIS_PORT}'
     expose:
-      - 9000
+      - '${TALE_SERVER_PORT}'
     ports:
-      - '9000:9000'
+      - '9000:${TALE_SERVER_PORT}'
     depends_on:
       - database
       - cache

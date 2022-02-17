@@ -1,6 +1,6 @@
 spring:
   r2dbc:
-    url: r2dbc:mysql://${MYSQL_HOSTNAME}:${MYSQL_PORT:3306}/${MYSQL_DATABASE}
+    url: r2dbc:mysql://${MYSQL_HOSTNAME}:${MYSQL_PORT:3306}/${MYSQL_DATABASE}?tlsVersion=TLSv1.2
     username: ${MYSQL_USERNAME}
     password: ${MYSQL_PASSWORD}
   session:
