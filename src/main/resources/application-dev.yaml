@@ -20,7 +20,7 @@ management:
 
 sql:
   r2dbc:
-    enabled: true
+    enabled: false
     populators: [ './sql/schema.sql' ]
     cleaners: [ ]
 

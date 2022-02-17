@@ -11,6 +11,18 @@ CREATE TABLE `users`
     `creation_time` LONG
 );
 
+CREATE TABLE `tales`
+(
+    `id`                INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `author`            INT UNSIGNED NOT NULL,
+    `title`             VARCHAR(32)  NOT NULL,
+    `description`       LONGTEXT,
+    `creation_time`     LONG,
+    `modification_time` LONG,
+    FOREIGN KEY (`author`) REFERENCES `users` (`id`),
+    UNIQUE (`author`, `title`)
+);
+
 INSERT INTO users(username, email, password, firstname, lastname, creation_time)
 VALUES ('username-01', 'email-01@mail.com', '{noop}password', 'firstname-01', 'lastname-01', UNIX_TIMESTAMP()),
        ('username-02', 'email-02@mail.com', '{noop}password', 'firstname-02', 'lastname-02', UNIX_TIMESTAMP()),

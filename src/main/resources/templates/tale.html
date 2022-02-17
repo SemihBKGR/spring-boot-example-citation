@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tale</title>
+</head>
+<body>
+
+<h1>Tale</h1>
+<div>
+    <form action="/tale" method="post">
+        <div>
+            <label for="title">Title</label>
+            <input id="title" name="title" type="text">
+        </div>
+        <div>
+            <label for="description">Description</label>
+            <textarea id="description" name="description"></textarea>
+        </div>
+        <input th:name="${_csrf.parameterName}" th:value="${_csrf.token}" type="hidden"/>
+        <button type="submit">Create</button>
+    </form>
+</div>
+</body>
+</html>
