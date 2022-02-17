@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS `tale`;
 DROP TABLE IF EXISTS `users`;
 
 CREATE TABLE `users`
@@ -16,7 +17,7 @@ CREATE TABLE `tales`
     `id`                INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `author`            INT UNSIGNED NOT NULL,
     `title`             VARCHAR(32)  NOT NULL,
-    `description`       LONGTEXT,
+    `description`       MEDIUMTEXT,
     `creation_time`     LONG,
     `modification_time` LONG,
     FOREIGN KEY (`author`) REFERENCES `users` (`id`),
