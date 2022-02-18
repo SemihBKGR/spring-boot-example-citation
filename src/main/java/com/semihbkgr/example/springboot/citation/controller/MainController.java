@@ -1,13 +1,13 @@
-package com.semihbkgr.example.springboot.tale.controller;
+package com.semihbkgr.example.springboot.citation.controller;
 
-import com.semihbkgr.example.springboot.tale.config.SecurityConfig;
-import com.semihbkgr.example.springboot.tale.model.Tale;
-import com.semihbkgr.example.springboot.tale.model.User;
-import com.semihbkgr.example.springboot.tale.service.TaleService;
-import com.semihbkgr.example.springboot.tale.service.UserService;
-import com.semihbkgr.example.springboot.tale.validate.UserBlacklistValidator;
-import com.semihbkgr.example.springboot.tale.validate.UserConstraintValidator;
-import com.semihbkgr.example.springboot.tale.validate.ValidationException;
+import com.semihbkgr.example.springboot.citation.config.SecurityConfig;
+import com.semihbkgr.example.springboot.citation.model.Tale;
+import com.semihbkgr.example.springboot.citation.model.User;
+import com.semihbkgr.example.springboot.citation.service.TaleService;
+import com.semihbkgr.example.springboot.citation.service.UserService;
+import com.semihbkgr.example.springboot.citation.validate.UserBlacklistValidator;
+import com.semihbkgr.example.springboot.citation.validate.UserConstraintValidator;
+import com.semihbkgr.example.springboot.citation.validate.ValidationException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.core.Authentication;

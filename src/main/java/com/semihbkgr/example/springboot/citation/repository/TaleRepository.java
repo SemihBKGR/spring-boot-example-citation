@@ -1,6 +1,6 @@
-package com.semihbkgr.example.springboot.tale.repository;
+package com.semihbkgr.example.springboot.citation.repository;
 
-import com.semihbkgr.example.springboot.tale.model.Tale;
+import com.semihbkgr.example.springboot.citation.model.Tale;
 import org.springframework.data.r2dbc.repository.Query;
 import org.springframework.data.r2dbc.repository.R2dbcRepository;
 import reactor.core.publisher.Flux;

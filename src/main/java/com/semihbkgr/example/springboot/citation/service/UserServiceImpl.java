@@ -1,7 +1,7 @@
-package com.semihbkgr.example.springboot.tale.service;
+package com.semihbkgr.example.springboot.citation.service;
 
-import com.semihbkgr.example.springboot.tale.model.User;
-import com.semihbkgr.example.springboot.tale.repository.UserRepository;
+import com.semihbkgr.example.springboot.citation.model.User;
+import com.semihbkgr.example.springboot.citation.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;

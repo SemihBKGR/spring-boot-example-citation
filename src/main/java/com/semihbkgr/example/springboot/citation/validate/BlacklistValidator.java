@@ -1,4 +1,4 @@
-package com.semihbkgr.example.springboot.tale.validate;
+package com.semihbkgr.example.springboot.citation.validate;
 
 import java.util.Collections;
 import java.util.Set;

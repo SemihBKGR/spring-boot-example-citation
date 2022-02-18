@@ -1,6 +1,6 @@
-package com.semihbkgr.example.springboot.tale.service;
+package com.semihbkgr.example.springboot.citation.service;
 
-import com.semihbkgr.example.springboot.tale.model.User;
+import com.semihbkgr.example.springboot.citation.model.User;
 import reactor.core.publisher.Mono;
 
 public interface UserService {

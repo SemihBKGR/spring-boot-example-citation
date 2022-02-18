@@ -1,6 +1,6 @@
-package com.semihbkgr.example.springboot.tale.config;
+package citation.config;
 
-import com.semihbkgr.example.springboot.tale.service.UserService;
+import citation.service.UserService;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

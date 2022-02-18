@@ -1,6 +1,6 @@
-package com.semihbkgr.example.springboot.tale.service;
+package com.semihbkgr.example.springboot.citation.service;
 
-import com.semihbkgr.example.springboot.tale.model.Tale;
+import com.semihbkgr.example.springboot.citation.model.Tale;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 

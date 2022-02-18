@@ -1,4 +1,4 @@
-package com.semihbkgr.example.springboot.tale.model;
+package com.semihbkgr.example.springboot.citation.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

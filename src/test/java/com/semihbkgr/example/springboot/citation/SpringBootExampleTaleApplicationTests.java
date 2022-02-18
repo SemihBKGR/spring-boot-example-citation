@@ -1,7 +1,6 @@
-package com.semihbkgr.example.springboot.tale;
+package com.semihbkgr.example.springboot.citation;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
 class SpringBootExampleTaleApplicationTests {
 

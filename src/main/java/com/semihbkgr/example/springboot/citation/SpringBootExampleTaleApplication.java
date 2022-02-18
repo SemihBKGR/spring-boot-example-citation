@@ -1,4 +1,4 @@
-package com.semihbkgr.example.springboot.tale;
+package com.semihbkgr.example.springboot.citation;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

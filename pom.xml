@@ -10,7 +10,7 @@
         <relativePath/>
     </parent>
 
-    <groupId>com.semihbkgr.example.springboot.tale</groupId>
+    <groupId>citation</groupId>
     <artifactId>spring-boot-example-tale</artifactId>
     <version>1.0.0</version>
 

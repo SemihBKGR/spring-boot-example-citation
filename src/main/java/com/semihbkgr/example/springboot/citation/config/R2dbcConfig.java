@@ -1,4 +1,4 @@
-package com.semihbkgr.example.springboot.tale.config;
+package com.semihbkgr.example.springboot.citation.config;
 
 import io.r2dbc.spi.ConnectionFactory;
 import lombok.Getter;
@@ -24,7 +24,7 @@ import org.springframework.security.core.context.SecurityContext;
 @Configuration
 @EnableConfigurationProperties(R2dbcConfig.R2dbcConfigProperties.class)
 @EnableR2dbcAuditing(auditorAwareRef = "auditorAware")
-@EnableR2dbcRepositories(basePackages = "com.semihbkgr.example.springboot.tale.model")
+@EnableR2dbcRepositories(basePackages = "com.semihbkgr.example.springboot.citation.model")
 public class R2dbcConfig {
 
     @Bean

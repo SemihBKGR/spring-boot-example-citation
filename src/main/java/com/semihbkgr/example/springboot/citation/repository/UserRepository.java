@@ -1,6 +1,6 @@
-package com.semihbkgr.example.springboot.tale.repository;
+package com.semihbkgr.example.springboot.citation.repository;
 
-import com.semihbkgr.example.springboot.tale.model.User;
+import com.semihbkgr.example.springboot.citation.model.User;
 import org.springframework.data.r2dbc.repository.R2dbcRepository;
 import reactor.core.publisher.Mono;
 

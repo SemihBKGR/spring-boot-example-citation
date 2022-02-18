@@ -1,7 +1,7 @@
-package com.semihbkgr.example.springboot.tale.config;
+package com.semihbkgr.example.springboot.citation.config;
 
-import com.semihbkgr.example.springboot.tale.validate.UserBlacklistValidator;
-import com.semihbkgr.example.springboot.tale.validate.UserConstraintValidator;
+import com.semihbkgr.example.springboot.citation.validate.UserBlacklistValidator;
+import com.semihbkgr.example.springboot.citation.validate.UserConstraintValidator;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

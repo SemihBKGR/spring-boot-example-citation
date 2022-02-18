@@ -1,6 +1,6 @@
-package com.semihbkgr.example.springboot.tale.validate;
+package com.semihbkgr.example.springboot.citation.validate;
 
-import com.semihbkgr.example.springboot.tale.model.User;
+import com.semihbkgr.example.springboot.citation.model.User;
 import reactor.core.publisher.Mono;
 
 import java.util.Set;
