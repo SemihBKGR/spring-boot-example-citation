@@ -1,22 +1,17 @@
 package com.semihbkgr.example.springboot.citation.controller;
 
-import com.semihbkgr.example.springboot.citation.config.SecurityConfig;
-import com.semihbkgr.example.springboot.citation.model.Tale;
 import com.semihbkgr.example.springboot.citation.model.User;
-import com.semihbkgr.example.springboot.citation.service.TaleService;
 import com.semihbkgr.example.springboot.citation.service.UserService;
 import com.semihbkgr.example.springboot.citation.validate.UserBlacklistValidator;
 import com.semihbkgr.example.springboot.citation.validate.UserConstraintValidator;
 import com.semihbkgr.example.springboot.citation.validate.ValidationException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import reactor.core.publisher.Mono;
 
@@ -27,7 +22,6 @@ import java.util.LinkedList;
 public class MainController {
 
     private final UserService userService;
-    private final TaleService taleService;
     private final PasswordEncoder passwordEncoder;
     private final UserConstraintValidator userConstraintValidator;
     private final UserBlacklistValidator userBlacklistValidator;
@@ -35,46 +29,6 @@ public class MainController {
     @GetMapping
     public String main() {
         return "main";
-    }
-
-    @GetMapping("/{username}")
-    public Mono<String> profile(@PathVariable String username, Authentication authentication, Model model) {
-        var securityUser = (SecurityConfig.SecurityUser) authentication.getPrincipal();
-        return taleService.findAllByAuthor(securityUser.getId())
-                .collectList()
-                .flatMap(tales -> {
-                    model.addAttribute("tales", tales);
-                    return userService.findById(securityUser.getId());
-                }).map(user -> {
-                    model.addAttribute("user", user);
-                    model.addAttribute("owner", user.getUsername().equals(username));
-                    return "profile";
-                });
-    }
-
-    @GetMapping("/{username}/{title}")
-    public Mono<String> tale(@PathVariable String username, @PathVariable String title, Authentication authentication, Model model) {
-        var securityUser = (SecurityConfig.SecurityUser) authentication.getPrincipal();
-        return taleService.findByTitleAndAuthorUsername(title, username)
-                .flatMap(tale -> {
-                    model.addAttribute("tale", tale);
-                    return userService.findById(securityUser.getId());
-                }).map(user -> {
-                    model.addAttribute("author", user);
-                    model.addAttribute("owner", user.getUsername().equals(username));
-                    return "tale";
-                });
-    }
-
-    @GetMapping("/tale")
-    public String taleCreate() {
-        return "tale-create";
-    }
-
-    @PostMapping("/tale")
-    public Mono<String> taleCreateProcess(@ModelAttribute Tale tale) {
-        return taleService.save(tale)
-                .thenReturn("redirect:tale");
     }
 
     @GetMapping("/login")
