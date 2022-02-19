@@ -1,32 +1,36 @@
 package com.semihbkgr.example.springboot.citation.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.LastModifiedDate;
+import lombok.With;
+import org.springframework.data.annotation.*;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 @Data
 @NoArgsConstructor
-@Table("users")
-public class User {
+@Table("authorities")
+public class Authority {
 
     @Id
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Integer id;
 
-    private String username;
+    private String name;
 
-    private String email;
+    private String explanation;
 
-    private String password;
+    @CreatedBy
+    @Column("created_by")
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private int createdBy;
 
-    private String firstname;
-
-    private String lastname;
+    @LastModifiedBy
+    @Column("modified_by")
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private int modifieddBy;
 
     @CreatedDate
     @Column("created_at")
@@ -37,5 +41,9 @@ public class User {
     @Column("modified_at")
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private long modifiedAt;
+
+    public boolean isRole() {
+        return name.startsWith("ROLE_");
+    }
 
 }

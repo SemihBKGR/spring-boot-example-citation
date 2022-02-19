@@ -12,9 +12,7 @@ import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 @Data
-@With
 @NoArgsConstructor
-@AllArgsConstructor
 @Table("authors")
 public class Author {
 
@@ -37,13 +35,14 @@ public class Author {
     private int deathYear;
 
     @CreatedDate
-    @Column("creation_time")
+    @Column("created_at")
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    private long creationTime;
+    private long createdAt;
 
     @LastModifiedDate
-    @Column("modification_time")
+    @Column("modified_at")
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    private long modificationTime;
+    private long modifiedAt;
+
 
 }
