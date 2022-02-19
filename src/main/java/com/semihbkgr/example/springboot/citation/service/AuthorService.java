@@ -9,6 +9,6 @@ public interface AuthorService {
 
     Mono<Author> update(int id, Author author);
 
-    Mono<Author> findById(int id);
+    Mono<Author> find(int id);
 
 }

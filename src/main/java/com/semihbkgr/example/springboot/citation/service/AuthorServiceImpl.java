@@ -31,7 +31,7 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public Mono<Author> findById(int id) {
+    public Mono<Author> find(int id) {
         return authorRepository.findById(id);
     }
 

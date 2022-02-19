@@ -49,7 +49,7 @@ CREATE TABLE `authors`
     `modified_at` LONG
 );
 
-CREATE TABLE books
+CREATE TABLE `books`
 (
     `id`           INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `isbn`         VARCHAR(32)  NOT NULL UNIQUE,
@@ -64,6 +64,20 @@ CREATE TABLE books
     `modified_at`  LONG,
     UNIQUE (`author`, `name`),
     FOREIGN KEY (`author`) REFERENCES `authors` (`id`)
+);
+
+CREATE TABLE `citations`
+(
+    `id`          INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `user`        INT UNSIGNED NOT NULL,
+    `book`        INT UNSIGNED NOT NULL,
+    `content`     LONGTEXT     NOT NULL,
+    `created_by`  INT,
+    `modified_by` INT,
+    `created_at`  LONG,
+    `modified_at` LONG,
+    FOREIGN KEY (`user`) REFERENCES `users` (`id`),
+    FOREIGN KEY (`book`) REFERENCES `books` (`id`)
 );
 
 INSERT INTO users(id, username, email, password, firstname, lastname, created_at, modified_at)
@@ -86,3 +100,6 @@ VALUES (1, 'name', 'surname', 'biography', 'nation', 1000, 1100, 1, 1, UNIX_TIME
 INSERT INTO books(id, isbn, author, name, explanation, release_year, page_count, created_by, modified_by, created_at,
                   modified_at)
 VALUES (1, 'isbn', 1, 'name', 'explanation', 1050, 700, 1, 1, UNIX_TIMESTAMP(), 0);
+
+INSERT INTO citations(id, user, book, content, created_by, modified_by, created_at, modified_at)
+VALUES (1, 1, 1, 'content', 1, 1, UNIX_TIMESTAMP(), 0);

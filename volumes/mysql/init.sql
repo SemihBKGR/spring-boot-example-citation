@@ -44,7 +44,7 @@ CREATE TABLE `authors`
     `modified_at` LONG
 );
 
-CREATE TABLE books
+CREATE TABLE `books`
 (
     `id`           INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `isbn`         VARCHAR(32)  NOT NULL UNIQUE,
@@ -59,4 +59,18 @@ CREATE TABLE books
     `modified_at`  LONG,
     UNIQUE (`author`, `name`),
     FOREIGN KEY (`author`) REFERENCES `authors` (`id`)
+);
+
+CREATE TABLE `citations`
+(
+    `id`          INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `user`        INT UNSIGNED NOT NULL,
+    `book`        INT UNSIGNED NOT NULL,
+    `content`     LONGTEXT     NOT NULL,
+    `created_by`  INT,
+    `modified_by` INT,
+    `created_at`  LONG,
+    `modified_at` LONG,
+    FOREIGN KEY (`user`) REFERENCES `users` (`id`),
+    FOREIGN KEY (`book`) REFERENCES `books` (`id`)
 );

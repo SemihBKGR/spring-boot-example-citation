@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Mono<User> findById(int id) {
+    public Mono<User> find(int id) {
         return userRepository.findById(id);
     }
 

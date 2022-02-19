@@ -15,7 +15,7 @@ public class AuthorController {
 
     @GetMapping("/{id}")
     public Mono<Author> get(@PathVariable int id) {
-        return authorService.findById(id);
+        return authorService.find(id);
     }
 
     @PostMapping
