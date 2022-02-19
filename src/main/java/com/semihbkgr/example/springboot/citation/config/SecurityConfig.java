@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.method.configuration.EnableReactiveMethodSecurity;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
-import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.ReactiveUserDetailsService;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,9 +22,10 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 import reactor.core.publisher.Mono;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @EnableReactiveMethodSecurity
 public class SecurityConfig {
@@ -37,6 +38,8 @@ public class SecurityConfig {
                 .logout()
                 .logoutUrl("/logout")
                 .and()
+                .csrf()
+                .disable()
                 .authorizeExchange()
                 .pathMatchers(HttpMethod.POST, "/signup")
                 .permitAll()
@@ -74,14 +77,10 @@ public class SecurityConfig {
         private final int id;
         private final String email;
 
-        public SecurityUser(int id, String username, String email, String password, Collection<? extends GrantedAuthority> authorities) {
-            super(username, password, authorities);
+        public SecurityUser(int id, String username, String email, String password, Collection<String> authorities) {
+            super(username, password, authorities.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toSet()));
             this.id = id;
             this.email = email;
-        }
-
-        public SecurityUser(int id, String username, String email, String password) {
-            this(id, username, email, password, Collections.emptyList());
         }
 
     }
@@ -96,7 +95,12 @@ public class SecurityConfig {
             return userService.findByUsername(username)
                     .switchIfEmpty(Mono.error(new UsernameNotFoundException(username)))
                     .map(user ->
-                            new SecurityUser(user.getId(), user.getUsername(), user.getEmail(), user.getPassword()));
+                            new SecurityUser(
+                                    user.getId(),
+                                    user.getUsername(),
+                                    user.getEmail(),
+                                    user.getPassword(),
+                                    Arrays.stream(user.getAuthorities().split(",")).collect(Collectors.toSet())));
         }
 
     }

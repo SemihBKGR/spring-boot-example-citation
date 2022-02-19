@@ -23,7 +23,7 @@ import org.springframework.security.core.context.SecurityContext;
 @Slf4j
 @Configuration
 @EnableConfigurationProperties(R2dbcConfig.R2dbcConfigProperties.class)
-@EnableR2dbcAuditing(auditorAwareRef = "auditorAware")
+@EnableR2dbcAuditing(auditorAwareRef = "auditorAware", modifyOnCreate = false)
 @EnableR2dbcRepositories(basePackages = "com.semihbkgr.example.springboot.citation.model")
 public class R2dbcConfig {
 

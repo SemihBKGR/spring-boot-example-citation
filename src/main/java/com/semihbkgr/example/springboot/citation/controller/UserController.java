@@ -6,10 +6,7 @@ import com.semihbkgr.example.springboot.citation.validate.UserBlacklistValidator
 import com.semihbkgr.example.springboot.citation.validate.UserConstraintValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
 @RestController
@@ -22,8 +19,13 @@ public class UserController {
     private final UserConstraintValidator userConstraintValidator;
     private final UserBlacklistValidator userBlacklistValidator;
 
+    @GetMapping("/{username}")
+    public Mono<User> get(@PathVariable String username) {
+        return userService.findByUsername(username);
+    }
+
     @PostMapping("/signup")
-    public Mono<User> signupProcess(@RequestBody User user) {
+    public Mono<User> signup(@RequestBody User user) {
         return userConstraintValidator.validate(user, false)
                 .then(userBlacklistValidator.validate(user, false))
                 .doOnNext(this::encodePassword)
