@@ -9,3 +9,16 @@ CREATE TABLE `users`
     `creation_time`     LONG,
     `modification_time` LONG
 );
+
+CREATE TABLE `authors`
+(
+    `id`                INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `name`              VARCHAR(64)  NOT NULL,
+    `surname`           VARCHAR(64)  NOT NULL,
+    `biography`         MEDIUMTEXT,
+    `nation`            VARCHAR(64),
+    `birth_year`        INT UNSIGNED,
+    `death_year`        INT UNSIGNED,
+    `creation_time`     LONG,
+    `modification_time` LONG
+);
