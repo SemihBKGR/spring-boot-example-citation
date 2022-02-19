@@ -14,7 +14,7 @@ CREATE TABLE `authorities`
 (
     `id`          INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `name`        VARCHAR(32)  NOT NULL UNIQUE,
-    `expalantion` VARCHAR(256) DEFAULT NULL,
+    `explanation` VARCHAR(256) DEFAULT NULL,
     `created_by`  INT,
     `modified_by` INT,
     `created_at`  LONG,
@@ -42,4 +42,21 @@ CREATE TABLE `authors`
     `modified_by` INT,
     `created_at`  LONG,
     `modified_at` LONG
+);
+
+CREATE TABLE books
+(
+    `id`           INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `isbn`         VARCHAR(32)  NOT NULL UNIQUE,
+    `author`       INT UNSIGNED NOT NULL,
+    `name`         VARCHAR(64)  NOT NULL,
+    `explanation`  MEDIUMTEXT,
+    `release_year` INT UNSIGNED,
+    `page_count`   INT UNSIGNED,
+    `created_by`   INT,
+    `modified_by`  INT,
+    `created_at`   LONG,
+    `modified_at`  LONG,
+    UNIQUE (`author`, `name`),
+    FOREIGN KEY (`author`) REFERENCES `authors` (`id`)
 );
