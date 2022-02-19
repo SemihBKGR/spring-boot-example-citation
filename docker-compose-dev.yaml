@@ -13,7 +13,7 @@ services:
     ports:
       - '3306:3306'
     networks:
-      - tale
+      - citation-dev
   cache:
     image: redis:6.2-alpine
     hostname: redis
@@ -21,9 +21,9 @@ services:
     ports:
       - '6379:6379'
     networks:
-      - tale
+      - citation-dev
 
 networks:
-  tale:
+  citation-dev:
     driver: bridge
     external: false

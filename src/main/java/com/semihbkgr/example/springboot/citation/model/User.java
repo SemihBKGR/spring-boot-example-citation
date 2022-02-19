@@ -1,9 +1,11 @@
 package com.semihbkgr.example.springboot.citation.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
@@ -13,6 +15,7 @@ import org.springframework.data.relational.core.mapping.Table;
 public class User {
 
     @Id
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Integer id;
 
     private String username;
@@ -27,6 +30,12 @@ public class User {
 
     @CreatedDate
     @Column("creation_time")
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private long creationTime;
+
+    @LastModifiedDate
+    @Column("modification_time")
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private long modificationTime;
 
 }

@@ -1,11 +1,12 @@
-package citation.config;
+package com.semihbkgr.example.springboot.citation.config;
 
-import citation.service.UserService;
+import com.semihbkgr.example.springboot.citation.service.UserService;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.method.configuration.EnableReactiveMethodSecurity;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.core.GrantedAuthority;
@@ -30,11 +31,19 @@ public class SecurityConfig {
 
     @Bean
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
-        http
-                .formLogin().loginPage("/login").and()
-                .logout().logoutUrl("/logout").and()
-                .authorizeExchange().pathMatchers("/login", "/signup").permitAll().anyExchange().authenticated();
-        return http.build();
+        return http
+                .httpBasic()
+                .and()
+                .logout()
+                .logoutUrl("/logout")
+                .and()
+                .authorizeExchange()
+                .pathMatchers(HttpMethod.POST, "/signup")
+                .permitAll()
+                .anyExchange()
+                .authenticated()
+                .and()
+                .build();
     }
 
     @Bean

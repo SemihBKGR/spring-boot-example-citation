@@ -13,13 +13,13 @@ services:
     volumes:
       - ./volumes/mysql:/docker-entrypoint-initdb.d
     networks:
-      - tale
+      - citation
   cache:
     image: 'redis:${REDIS_VERSION}'
     hostname: '${REDIS_HOSTNAME}'
     container_name: redis-server
     networks:
-      - tale
+      - citation
   server:
     build: .
     image: tale
@@ -43,9 +43,9 @@ services:
       - database
       - cache
     networks:
-      - tale
+      - citation
 
 networks:
-  tale:
+  citation:
     driver: bridge
     external: false
