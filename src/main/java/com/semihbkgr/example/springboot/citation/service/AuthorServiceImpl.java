@@ -14,7 +14,7 @@ public class AuthorServiceImpl implements AuthorService {
     private final AuthorRepository repository;
 
     @Override
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAnyRole('ADMIN','MODERATOR')")
     public Mono<Author> save(Author author) {
         return repository.save(author);
     }
@@ -25,7 +25,7 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAnyRole('ADMIN','MODERATOR')")
     public Mono<Void> delete(int id) {
         return repository.deleteById(id);
     }

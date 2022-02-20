@@ -83,21 +83,12 @@ CREATE TABLE `citations`
 );
 
 INSERT INTO users(id, username, email, password, firstname, lastname, created_at, modified_at)
-VALUES (1, 'admin', 'admin@mail.com', '{noop}password', 'firstname-01', 'lastname-01', UNIX_TIMESTAMP(), 0);
+VALUES (1, 'admin', 'admin@mail.com', '{noop}password', 'firstname', 'lastname', UNIX_TIMESTAMP(), 0);
 
 INSERT INTO authorities (id, name, explanation, created_by, modified_by, created_at, modified_at)
-VALUES (1, 'ROLE_ADMIN', 'explanation', 1, 1, UNIX_TIMESTAMP(), 0);
+VALUES (1, 'ROLE_ADMIN', 'explanation', 1, 1, UNIX_TIMESTAMP(), 0),
+       (1, 'ROLE_MODERATOR', 'explanation', 1, 1, UNIX_TIMESTAMP(), 0),
+       (1, 'ROLE_EDITOR', 'explanation', 1, 1, UNIX_TIMESTAMP(), 0);
 
 INSERT INTO user_authority_joins (user_id, authority_id)
 VALUES (1, 1);
-
-INSERT INTO authors(id, name, surname, biography, nation, birth_year, death_year, created_by, modified_by, created_at,
-                    modified_at)
-VALUES (1, 'name', 'surname', 'biography', 'nation', 1000, 1100, 1, 1, UNIX_TIMESTAMP(), 0);
-
-INSERT INTO books(id, isbn, author, name, explanation, release_year, page_count, created_by, modified_by, created_at,
-                  modified_at)
-VALUES (1, 'isbn', 1, 'name', 'explanation', 1050, 700, 1, 1, UNIX_TIMESTAMP(), 0);
-
-INSERT INTO citations(id, user, book, content, created_by, modified_by, created_at, modified_at)
-VALUES (1, 1, 1, 'content', 1, 1, UNIX_TIMESTAMP(), 0);

@@ -36,7 +36,7 @@ public class CitationServiceImpl implements CitationService {
     }
 
     @Override
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAnyRole('ADMIN','MODERATOR')")
     public Mono<Void> delete(int id) {
         return repository.deleteById(id);
     }

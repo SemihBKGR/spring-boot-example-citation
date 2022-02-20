@@ -10,8 +10,12 @@ spring:
     port: ${REDIS_PORT:6379}
 
 server:
-
   port: ${SERVER_PORT}
+  error:
+    whitelabel:
+      enabled: false
+    include-stacktrace: never
+    include-binding-errors: never
 
 management:
   endpoints:

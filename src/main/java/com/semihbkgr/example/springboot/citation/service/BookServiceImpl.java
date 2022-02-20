@@ -16,7 +16,7 @@ public class BookServiceImpl implements BookService {
     private final BookRepository repository;
 
     @Override
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAnyRole('ADMIN','MODERATOR','EDITOR')")
     public Mono<Book> save(Book book) {
         return repository.save(book);
     }
@@ -32,7 +32,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAnyRole('ADMIN','MODERATOR','EDITOR')")
     public Mono<Void> delete(int id) {
         return repository.deleteById(id);
     }

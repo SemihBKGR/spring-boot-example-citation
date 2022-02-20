@@ -11,6 +11,11 @@ spring:
 
 server:
   port: 9000
+  error:
+    whitelabel:
+      enabled: false
+    include-stacktrace: never
+    include-binding-errors: never
 
 management:
   endpoints:
