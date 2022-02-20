@@ -22,7 +22,7 @@ public class CitationController {
     private static final int CITATION_DEFAULT_SIZE = 10;
     private static final String CITATION_DEFAULT_SIZE_STRING = "10";
 
-    private static final String CITATION_SORT_COLUMN = "created_at";
+    private static final String CITATION_SORT_COLUMN = "createdAt";
 
     private final CitationService citationService;
 
@@ -31,7 +31,7 @@ public class CitationController {
         return citationService.find(id);
     }
 
-    @GetMapping("/book/{user}")
+    @GetMapping("/user/{user}")
     public Flux<Citation> getAllByUser(@PathVariable int user,
                                        @RequestParam(value = "page", required = false, defaultValue = "0") int page,
                                        @RequestParam(value = "size", required = false, defaultValue = CITATION_DEFAULT_SIZE_STRING) int size) {

@@ -19,7 +19,7 @@ public class AuthorityController {
     private static final int AUTHORITY_DEFAULT_SIZE = 10;
     private static final String AUTHORITY_DEFAULT_SIZE_STRING = "10";
 
-    private static final String AUTHORITY_SORT_COLUMN = "created_at";
+    private static final String AUTHORITY_SORT_COLUMN = "createdAt";
 
     private final AuthorityService authorityService;
 

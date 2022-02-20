@@ -18,7 +18,7 @@ public class BookController {
     private static final int BOOK_DEFAULT_SIZE = 10;
     private static final String BOOK_DEFAULT_SIZE_STRING = "10";
 
-    private static final String BOOK_SORT_COLUMN = "created_at";
+    private static final String BOOK_SORT_COLUMN = "createdAt";
 
     private final BookService bookService;
 

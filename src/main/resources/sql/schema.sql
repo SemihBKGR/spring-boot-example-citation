@@ -1,4 +1,6 @@
 DROP TABLE IF EXISTS `user_authority_joins`;
+DROP TABLE IF EXISTS `citations`;
+DROP TABLE IF EXISTS `books`;
 DROP TABLE IF EXISTS `users`;
 DROP TABLE IF EXISTS `authorities`;
 DROP TABLE IF EXISTS `authors`;
@@ -81,14 +83,10 @@ CREATE TABLE `citations`
 );
 
 INSERT INTO users(id, username, email, password, firstname, lastname, created_at, modified_at)
-VALUES (1, 'username-01', 'email-01@mail.com', '{noop}password', 'firstname-01', 'lastname-01', UNIX_TIMESTAMP(), 0),
-       (2, 'username-02', 'email-02@mail.com', '{noop}password', 'firstname-02', 'lastname-02', UNIX_TIMESTAMP(), 0),
-       (3, 'username-03', 'email-03@mail.com', '{noop}password', 'firstname-03', 'lastname-03', UNIX_TIMESTAMP(), 0),
-       (4, 'username-04', 'email-04@mail.com', '{noop}password', 'firstname-04', 'lastname-04', UNIX_TIMESTAMP(), 0),
-       (5, 'username-05', 'email-05@mail.com', '{noop}password', 'firstname-05', 'lastname-05', UNIX_TIMESTAMP(), 0);
+VALUES (1, 'admin', 'admin@mail.com', '{noop}password', 'firstname-01', 'lastname-01', UNIX_TIMESTAMP(), 0);
 
 INSERT INTO authorities (id, name, explanation, created_by, modified_by, created_at, modified_at)
-VALUES (1, 'admin', 'admin explanation', 1, 1, UNIX_TIMESTAMP(), 0);
+VALUES (1, 'ROLE_ADMIN', 'explanation', 1, 1, UNIX_TIMESTAMP(), 0);
 
 INSERT INTO user_authority_joins (user_id, authority_id)
 VALUES (1, 1);
