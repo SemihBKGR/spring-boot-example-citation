@@ -3,6 +3,7 @@ package com.semihbkgr.example.springboot.citation.service;
 import com.semihbkgr.example.springboot.citation.model.Author;
 import com.semihbkgr.example.springboot.citation.repository.AuthorRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
@@ -10,29 +11,23 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class AuthorServiceImpl implements AuthorService {
 
-    private final AuthorRepository authorRepository;
+    private final AuthorRepository repository;
 
     @Override
+    @PreAuthorize("hasRole('ADMIN')")
     public Mono<Author> save(Author author) {
-        return authorRepository.save(author);
-    }
-
-    @Override
-    public Mono<Author> update(int id, Author author) {
-        return authorRepository.findById(id)
-                .flatMap(authorFromDB -> {
-                    authorFromDB.setName(author.getName());
-                    authorFromDB.setSurname(author.getSurname());
-                    authorFromDB.setBiography(author.getBiography());
-                    authorFromDB.setBirthYear(author.getBirthYear());
-                    authorFromDB.setDeathYear(author.getDeathYear());
-                    return authorRepository.save(authorFromDB);
-                });
+        return repository.save(author);
     }
 
     @Override
     public Mono<Author> find(int id) {
-        return authorRepository.findById(id);
+        return repository.findById(id);
+    }
+
+    @Override
+    @PreAuthorize("hasRole('ADMIN')")
+    public Mono<Void> delete(int id) {
+        return repository.deleteById(id);
     }
 
 }

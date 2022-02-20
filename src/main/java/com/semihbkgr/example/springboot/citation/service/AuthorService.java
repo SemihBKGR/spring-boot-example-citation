@@ -7,8 +7,8 @@ public interface AuthorService {
 
     Mono<Author> save(Author author);
 
-    Mono<Author> update(int id, Author author);
-
     Mono<Author> find(int id);
+
+    Mono<Void> delete(int id);
 
 }

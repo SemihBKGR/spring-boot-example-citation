@@ -4,6 +4,7 @@ import com.semihbkgr.example.springboot.citation.model.Book;
 import com.semihbkgr.example.springboot.citation.repository.BookRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -15,6 +16,7 @@ public class BookServiceImpl implements BookService {
     private final BookRepository repository;
 
     @Override
+    @PreAuthorize("hasRole('ADMIN')")
     public Mono<Book> save(Book book) {
         return repository.save(book);
     }
@@ -26,10 +28,11 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Flux<Book> findAllByAuthor(int author, Pageable pageable) {
-        return repository.findByAuthor(author,pageable);
+        return repository.findByAuthor(author, pageable);
     }
 
     @Override
+    @PreAuthorize("hasRole('ADMIN')")
     public Mono<Void> delete(int id) {
         return repository.deleteById(id);
     }

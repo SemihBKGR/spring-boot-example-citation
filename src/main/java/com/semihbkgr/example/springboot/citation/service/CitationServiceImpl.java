@@ -4,6 +4,7 @@ import com.semihbkgr.example.springboot.citation.model.Citation;
 import com.semihbkgr.example.springboot.citation.repository.CitationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -35,8 +36,14 @@ public class CitationServiceImpl implements CitationService {
     }
 
     @Override
+    @PreAuthorize("hasRole('ADMIN')")
     public Mono<Void> delete(int id) {
         return repository.deleteById(id);
+    }
+
+    @Override
+    public Mono<Void> delete(int id, int user) {
+        return repository.deleteByIdAndUser(id, user);
     }
 
 }

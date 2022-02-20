@@ -17,4 +17,6 @@ public interface CitationService {
 
     Mono<Void> delete(int id);
 
+    Mono<Void> delete(int id, int user);
+
 }

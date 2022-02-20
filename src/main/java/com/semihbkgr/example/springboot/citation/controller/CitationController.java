@@ -75,8 +75,17 @@ public class CitationController {
     }
 
     @DeleteMapping("/{id}")
-    public Mono<Void> delete(@PathVariable int id) {
-        return citationService.delete(id);
+    public Mono<Void> delete(@PathVariable int id,
+                             @RequestParam(name = "force", required = false, defaultValue = "false") boolean force) {
+        if (force)
+            return citationService.delete(id);
+        else
+            return ReactiveSecurityContextHolder.getContext()
+                    .map(SecurityContext::getAuthentication)
+                    .filter(Authentication::isAuthenticated)
+                    .map(Authentication::getPrincipal)
+                    .map(SecurityConfig.SecurityUser.class::cast)
+                    .flatMap(securityUser -> citationService.delete(id, securityUser.getId()));
     }
 
 }
