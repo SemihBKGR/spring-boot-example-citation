@@ -6,6 +6,7 @@ import com.semihbkgr.example.springboot.citation.service.CitationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.ReactiveSecurityContextHolder;
 import org.springframework.security.core.context.SecurityContext;
@@ -48,6 +49,7 @@ public class CitationController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public Mono<Citation> save(@RequestBody Citation citation) {
         return ReactiveSecurityContextHolder.getContext()
                 .map(SecurityContext::getAuthentication)
@@ -61,6 +63,7 @@ public class CitationController {
     }
 
     @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
     public Mono<Citation> update(@PathVariable int id, @RequestBody Citation citation) {
         return ReactiveSecurityContextHolder.getContext()
                 .map(SecurityContext::getAuthentication)
@@ -75,6 +78,7 @@ public class CitationController {
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
     public Mono<Void> delete(@PathVariable int id,
                              @RequestParam(name = "force", required = false, defaultValue = "false") boolean force) {
         if (force)

@@ -4,6 +4,7 @@ import com.semihbkgr.example.springboot.citation.config.SecurityConfig;
 import com.semihbkgr.example.springboot.citation.model.Author;
 import com.semihbkgr.example.springboot.citation.service.AuthorService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.ReactiveSecurityContextHolder;
 import org.springframework.security.core.context.SecurityContext;
@@ -23,11 +24,13 @@ public class AuthorController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public Mono<Author> save(@RequestBody Author author) {
         return authorService.save(author);
     }
 
     @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
     public Mono<Author> update(@PathVariable int id, @RequestBody Author author) {
         return ReactiveSecurityContextHolder.getContext()
                 .map(SecurityContext::getAuthentication)
@@ -41,6 +44,7 @@ public class AuthorController {
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
     public Mono<Void> delete(@PathVariable int id) {
         return authorService.delete(id);
     }

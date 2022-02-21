@@ -6,6 +6,7 @@ import com.semihbkgr.example.springboot.citation.service.AuthorityService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -31,17 +32,20 @@ public class AuthorityController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public Mono<Authority> save(@RequestBody Authority authority) {
         return authorityService.save(authority);
     }
 
     @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
     public Mono<Authority> update(@PathVariable int id, @RequestBody Authority authority) {
         authority.setId(id);
         return authorityService.save(authority);
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
     public Mono<Void> delete(@PathVariable int id) {
         return authorityService.delete(id);
     }

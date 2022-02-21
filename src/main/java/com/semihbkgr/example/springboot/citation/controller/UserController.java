@@ -6,6 +6,7 @@ import com.semihbkgr.example.springboot.citation.service.UserService;
 import com.semihbkgr.example.springboot.citation.validate.UserBlacklistValidator;
 import com.semihbkgr.example.springboot.citation.validate.UserConstraintValidator;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.ReactiveSecurityContextHolder;
 import org.springframework.security.core.context.SecurityContext;
@@ -22,6 +23,7 @@ public class UserController {
     private final PasswordEncoder passwordEncoder;
     private final UserConstraintValidator userConstraintValidator;
     private final UserBlacklistValidator userBlacklistValidator;
+
 
     @GetMapping
     public Mono<User> get() {
@@ -44,6 +46,7 @@ public class UserController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public Mono<User> signup(@RequestBody User user) {
         return userConstraintValidator.validate(user, false)
                 .then(userBlacklistValidator.validate(user, false))
@@ -52,6 +55,7 @@ public class UserController {
     }
 
     @PutMapping
+    @ResponseStatus(HttpStatus.ACCEPTED)
     public Mono<User> update(@RequestBody User user) {
         return ReactiveSecurityContextHolder.getContext()
                 .map(SecurityContext::getAuthentication)

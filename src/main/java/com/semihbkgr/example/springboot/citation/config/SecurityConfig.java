@@ -72,6 +72,13 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
+    @Bean
+    @Profile("test")
+    @SuppressWarnings("deprecation")
+    public PasswordEncoder passwordEncoderTest() {
+        return NoOpPasswordEncoder.getInstance();
+    }
+
     @Getter
     @EqualsAndHashCode(callSuper = true)
     public static class SecurityUser extends User implements Serializable {

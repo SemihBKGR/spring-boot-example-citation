@@ -5,6 +5,7 @@ import com.semihbkgr.example.springboot.citation.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -36,17 +37,20 @@ public class BookController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public Mono<Book> save(@RequestBody Book book) {
         return bookService.save(book);
     }
 
     @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
     public Mono<Book> update(@PathVariable int id, @RequestBody Book book) {
         book.setId(id);
         return bookService.save(book);
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
     public Mono<Void> delete(@PathVariable int id) {
         return bookService.delete(id);
     }

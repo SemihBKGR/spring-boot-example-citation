@@ -87,8 +87,8 @@ VALUES (1, 'admin', 'admin@mail.com', '{noop}password', 'firstname', 'lastname',
 
 INSERT INTO authorities (id, name, explanation, created_by, modified_by, created_at, modified_at)
 VALUES (1, 'ROLE_ADMIN', 'explanation', 1, 1, UNIX_TIMESTAMP(), 0),
-       (1, 'ROLE_MODERATOR', 'explanation', 1, 1, UNIX_TIMESTAMP(), 0),
-       (1, 'ROLE_EDITOR', 'explanation', 1, 1, UNIX_TIMESTAMP(), 0);
+       (2, 'ROLE_MODERATOR', 'explanation', 1, 1, UNIX_TIMESTAMP(), 0),
+       (3, 'ROLE_EDITOR', 'explanation', 1, 1, UNIX_TIMESTAMP(), 0);
 
 INSERT INTO user_authority_joins (user_id, authority_id)
 VALUES (1, 1);
