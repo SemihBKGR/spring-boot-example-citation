@@ -2,6 +2,7 @@ package com.semihbkgr.example.springboot.citation.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.*;
 import org.springframework.data.relational.core.mapping.Column;
@@ -26,21 +27,25 @@ public class Citation {
     @CreatedBy
     @Column("created_by")
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    @EqualsAndHashCode.Exclude
     private int createdBy;
 
     @LastModifiedBy
     @Column("modified_by")
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    @EqualsAndHashCode.Exclude
     private int modifieddBy;
 
     @CreatedDate
     @Column("created_at")
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    @EqualsAndHashCode.Exclude
     private long createdAt;
 
     @LastModifiedDate
     @Column("modified_at")
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    @EqualsAndHashCode.Exclude
     private long modifiedAt;
 
 }

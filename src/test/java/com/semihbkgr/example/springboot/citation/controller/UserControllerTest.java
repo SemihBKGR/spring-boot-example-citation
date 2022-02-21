@@ -8,7 +8,6 @@ import com.semihbkgr.example.springboot.citation.service.UserServiceImpl;
 import com.semihbkgr.example.springboot.citation.test.annotation.WithMockSecurityUser;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +16,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.web.reactive.function.BodyInserters;
 import reactor.core.publisher.Mono;
@@ -27,7 +25,6 @@ import java.util.Collections;
 import static org.mockito.Mockito.*;
 
 @ActiveProfiles("test")
-@ExtendWith(SpringExtension.class)
 @WebFluxTest(controllers = UserController.class)
 @MockitoSettings(strictness = Strictness.WARN)
 @Import({UserServiceImpl.class, SecurityConfig.class, ValidationConfig.class})

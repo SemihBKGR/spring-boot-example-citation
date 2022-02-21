@@ -2,6 +2,7 @@ package com.semihbkgr.example.springboot.citation.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
@@ -35,11 +36,13 @@ public class Author {
     @CreatedDate
     @Column("created_at")
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    @EqualsAndHashCode.Exclude
     private long createdAt;
 
     @LastModifiedDate
     @Column("modified_at")
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    @EqualsAndHashCode.Exclude
     private long modifiedAt;
 
 }

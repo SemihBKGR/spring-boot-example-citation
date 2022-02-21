@@ -38,7 +38,7 @@ public class BookController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Mono<Book> save(@RequestBody Book book) {
+    public Mono<Book> create(@RequestBody Book book) {
         return bookService.save(book);
     }
 

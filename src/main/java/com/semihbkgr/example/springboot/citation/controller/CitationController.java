@@ -50,7 +50,7 @@ public class CitationController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Mono<Citation> save(@RequestBody Citation citation) {
+    public Mono<Citation> create(@RequestBody Citation citation) {
         return ReactiveSecurityContextHolder.getContext()
                 .map(SecurityContext::getAuthentication)
                 .filter(Authentication::isAuthenticated)

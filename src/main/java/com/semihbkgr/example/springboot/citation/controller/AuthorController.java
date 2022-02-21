@@ -25,7 +25,7 @@ public class AuthorController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Mono<Author> save(@RequestBody Author author) {
+    public Mono<Author> create(@RequestBody Author author) {
         return authorService.save(author);
     }
 

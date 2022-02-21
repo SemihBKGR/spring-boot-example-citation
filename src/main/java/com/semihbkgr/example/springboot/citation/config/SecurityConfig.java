@@ -52,7 +52,7 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecurityUserService userDetailsService(UserService userService) {
+    public SecurityUserService securityUserService(UserService userService) {
         return new SecurityUserService(userService);
     }
 

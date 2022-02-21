@@ -33,7 +33,7 @@ public class AuthorityController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Mono<Authority> save(@RequestBody Authority authority) {
+    public Mono<Authority> create(@RequestBody Authority authority) {
         return authorityService.save(authority);
     }
 
