@@ -1,6 +1,6 @@
 spring:
   application:
-    name: spring-boot-example-tale
+    name: spring-boot-example-citation
 
 validation:
   user:

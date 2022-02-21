@@ -6,7 +6,7 @@ services:
     hostname: mysql
     container_name: mysql-server-dev
     environment:
-      MYSQL_DATABASE: 'taledb'
+      MYSQL_DATABASE: 'citationdb'
       MYSQL_USER: 'user'
       MYSQL_PASSWORD: 'password'
       MYSQL_ROOT_PASSWORD: 'password'

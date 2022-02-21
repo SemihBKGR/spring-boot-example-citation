@@ -22,12 +22,12 @@ services:
       - citation
   server:
     build: .
-    image: tale
-    hostname: tale
-    container_name: tale-server
+    image: citation
+    hostname: citation
+    container_name: citation-server
     environment:
-      SPRING_PROFILES_ACTIVE: '${TALE_SPRING_PROFILES_ACTIVE}'
-      SERVER_PORT: '${TALE_SERVER_PORT}'
+      SPRING_PROFILES_ACTIVE: '${CITATION_SPRING_PROFILES_ACTIVE}'
+      SERVER_PORT: '${CITATION_SERVER_PORT}'
       MYSQL_HOSTNAME: '${MYSQL_HOSTNAME}'
       MYSQL_PORT: '${MYSQL_PORT}'
       MYSQL_DATABASE: '${MYSQL_DATABASE}'
@@ -36,9 +36,9 @@ services:
       REDIS_HOSTNAME: '${REDIS_HOSTNAME}'
       REDIS_PORT: '${REDIS_PORT}'
     expose:
-      - '${TALE_SERVER_PORT}'
+      - '${CITATION_SERVER_PORT}'
     ports:
-      - '9000:${TALE_SERVER_PORT}'
+      - '9000:${CITATION_SERVER_PORT}'
     depends_on:
       - database
       - cache

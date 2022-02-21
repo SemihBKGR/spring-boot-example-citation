@@ -1,3 +1,3 @@
 # Spring Boot Example Citation
 
-Example project of Spring Boot
+SpringBoot Native and Reactive web API project

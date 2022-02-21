@@ -11,18 +11,18 @@
     </parent>
 
     <groupId>citation</groupId>
-    <artifactId>spring-boot-example-tale</artifactId>
+    <artifactId>spring-boot-example-citation</artifactId>
     <version>1.0.0</version>
 
-    <name>spring-boot-example-tale</name>
-    <description>spring-boot-example-tale</description>
+    <name>spring-boot-example-citation</name>
+    <description>spring-boot-example-citation</description>
 
     <properties>
         <java.version>11</java.version>
         <repackage.classifier/>
         <spring-native.version>0.11.2</spring-native.version>
         <testcontainers.version>1.16.2</testcontainers.version>
-        <final-jar-name>tale</final-jar-name>
+        <final-jar-name>citation</final-jar-name>
     </properties>
 
     <dependencies>
@@ -152,12 +152,14 @@
                 <artifactId>spring-aot-maven-plugin</artifactId>
                 <version>${spring-native.version}</version>
                 <executions>
+                    <!--
                     <execution>
                         <id>test-generate</id>
                         <goals>
                             <goal>test-generate</goal>
                         </goals>
                     </execution>
+                    -->
                     <execution>
                         <id>generate</id>
                         <goals>
