@@ -1,3 +1,14 @@
 spring:
   application:
     name: spring-boot-example-tale
+
+validation:
+  user:
+    constraints:
+      username-min: 5
+      username-max: 32
+      email-min: 5
+      email-max: 64
+      password-min: 5
+      pasword-max: 64
+    blacklist: blacklist.list

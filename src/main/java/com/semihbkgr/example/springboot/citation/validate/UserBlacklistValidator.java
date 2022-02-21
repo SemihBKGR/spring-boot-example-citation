@@ -17,11 +17,9 @@ public class UserBlacklistValidator extends BlacklistValidator<User> {
 
             var vldExc = new BlacklistValidationException();
 
-            if (!lenient || user.getUsername().length() > 0) {
-                if (contains(user.getUsername()))
-                    vldExc.addInvalidFiled(new ValidationException.InvalidField("username", user.getUsername(),
-                            "'" + user.getUsername() + "' is reserved name"));
-            }
+            if (contains(user.getUsername()))
+                vldExc.addInvalidFiled(new ValidationException.InvalidField("username", user.getUsername(),
+                        "'" + user.getUsername() + "' is reserved name"));
 
             if (vldExc.getInvalidFieldMap().isEmpty())
                 return Mono.just(user);
